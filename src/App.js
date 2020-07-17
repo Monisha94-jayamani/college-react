@@ -24,7 +24,7 @@ const Webpage = () => {
     fetchdata();
   }, []);
   function add() {
-    fetch("http://localhost:5000/student", {
+    fetch("https://collegerecords.herokuapp.com/student", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -47,10 +47,10 @@ const Webpage = () => {
   console.log(data[0]);
   function update(index) {
     // setdata(student.filter((d, i) => index == i)[0]);
-    setname(student.filter((d, i) => index == i)[0].name);
-    setstaffid(student.filter((d, i) => index == i)[0].staffid);
-    setemail(student.filter((d, i) => index == i)[0].email);
-    setid(student.filter((d, i) => index == i)[0].id);
+    setname(student.filter((d, i) => index === i)[0].name);
+    setstaffid(student.filter((d, i) => index === i)[0].staffid);
+    setemail(student.filter((d, i) => index === i)[0].email);
+    setid(student.filter((d, i) => index === i)[0].id);
   }
   function updatedata() {
     fetch("https://collegerecords.herokuapp.com/studentupdate", {
@@ -74,13 +74,13 @@ const Webpage = () => {
     // setdata(student.filter((d, i) => index == i));
     // console.log("data", data);
     // console.log("array", data[0]);
-    console.log("new", student.filter((d, i) => index == i)[0]);
+    console.log("new", student.filter((d, i) => index === i)[0]);
     fetch("https://collegerecords.herokuapp.com/studentdelete", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(student.filter((d, i) => index == i)[0]),
+      body: JSON.stringify(student.filter((d, i) => index === i)[0]),
     })
       .then((res) => res.json())
       .then((data) => {
